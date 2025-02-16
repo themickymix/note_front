@@ -8,7 +8,8 @@ type Note = {
 };
 
 function Notes() {
-  const [notes, setNotes] = useState<Note[] | null>(null);
+  const [notes, setNotes] = useState<Note[]>([]); // ✅ Use an empty array instead of null
+  const [loading, setLoading] = useState(true); // ✅ Track loading state
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -16,26 +17,27 @@ function Notes() {
         const response = await axios.get(
           "https://note-be-ql9a.onrender.com/api/notes",
           {
-            withCredentials: true, // Include credentials if needed
-            headers: {
-              "Content-Type": "application/json",
-    
-            },
+            withCredentials: true, // ✅ Include credentials if needed
+            headers: { "Content-Type": "application/json" },
           }
         );
         setNotes(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching notes:", error);
+      } finally {
+        setLoading(false); // ✅ Stop loading when request completes
       }
     };
+
     fetchNotes();
-  }, [notes]);
+  }, []); // ✅ Run only once when the component mounts
 
   return (
     <div>
-      {notes === null ? (
-        <p>Loading...</p>
+      {loading ? (
+        <p>Loading...</p> // ✅ Show loading state
+      ) : notes.length === 0 ? (
+        <p>No notes available.</p> // ✅ Handle empty notes array
       ) : (
         notes.map((note) => (
           <div key={note._id}>
