@@ -19,7 +19,7 @@ function Notes() {
             withCredentials: true, // Include credentials if needed
             headers: {
               "Content-Type": "application/json",
-              credentials: "include",
+    
             },
           }
         );
