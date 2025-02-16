@@ -10,8 +10,6 @@ type Note = {
 function Notes() {
   const [notes, setNotes] = useState<Note[] | null>(null);
 
-  
-
   useEffect(() => {
     const fetchNotes = async () => {
       try {
@@ -19,6 +17,10 @@ function Notes() {
           "https://note-be-ql9a.onrender.com/api/notes",
           {
             withCredentials: true, // Include credentials if needed
+            headers: {
+              "Content-Type": "application/json",
+              credentials: "include",
+            },
           }
         );
         setNotes(response.data);

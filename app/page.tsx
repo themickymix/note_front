@@ -44,6 +44,7 @@ export default function Home() {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            credentials: "include",
           },
         } // Fixed syntax error
       );

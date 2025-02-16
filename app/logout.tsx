@@ -13,6 +13,7 @@ function Logout() {
           withCredentials: true, // ✅ Ensures cookies are sent
           headers: {
             "Content-Type": "application/json",
+            credentials: "include",
           },
         }
       );
