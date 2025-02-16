@@ -13,7 +13,6 @@ function Logout() {
           withCredentials: true, // ✅ Ensures cookies are sent
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*", // ✅ Allows cross-origin requests
           },
         }
       );
