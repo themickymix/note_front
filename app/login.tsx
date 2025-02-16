@@ -16,7 +16,7 @@ function Login() {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-            credentials: "include",
+            "Access-Control-Allow-Origin": "*",
           },
         }
       )

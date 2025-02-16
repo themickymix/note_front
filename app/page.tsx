@@ -19,7 +19,7 @@ export default function Home() {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-            credentials: "include",
+            "Access-Control-Allow-Origin": "*",
           },
         })
         .then((res) => {
@@ -44,7 +44,7 @@ export default function Home() {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-            credentials: "include",
+            "Access-Control-Allow-Origin": "*",
           },
         } // Fixed syntax error
       );
